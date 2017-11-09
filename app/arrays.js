@@ -16,11 +16,11 @@ exports.arraysAnswers = {
 
   remove: function(arr, item) {
     var ret = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-      if (arr[i] !== item) {
-        ret.push(arr[i]);
+    arr.forEach(function(element) {
+      if (element !== item) {
+        ret.push(element);
       }
-    }
+    });
     return ret;
   },
 
@@ -71,11 +71,11 @@ exports.arraysAnswers = {
 
   count: function(arr, item) {
     var count = 0;
-    for (var i = 0, len = arr.length; i < len; i++) {
-      if (arr[i] === item) {
+    arr.forEach(function(element) {
+      if (element === item) {
         count++;
       }
-    }
+    });
     return count;
   },
 
@@ -83,10 +83,9 @@ exports.arraysAnswers = {
     var seen = {};
     var dupes = [];
 
-    for (var i = 0, len = arr.length; i < len; i++) {
-      seen[arr[i]] = seen[arr[i]] ? seen[arr[i]] + 1 : 1;
-    }
-
+    arr.forEach(function(element) {
+      seen[element] = seen[element] ? seen[element] + 1 : 1;
+    });
     for (var item in seen) {
       if (seen.hasOwnProperty(item) && seen[item] > 1) {
         dupes.push(Number(item));
@@ -105,11 +104,11 @@ exports.arraysAnswers = {
 
   findAllOccurrences: function(arr, target) {
     var occ = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-      if (arr[i] === target) {
+    arr.forEach(function(element, i) {
+      if (element === target) {
         occ.push(i);
       }
-    }
+    });
     return occ;
   }
 };
